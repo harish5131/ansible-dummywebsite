@@ -1,0 +1,13 @@
+[wordpress-server-web]
+somedummysite
+
+[wordpress-server-app]
+somedummysite
+
+[wordpress-server-db]
+somedummysite
+
+[wordpress-stack:children]
+wordpress-server-web
+wordpress-server-app
+wordpress-server-db

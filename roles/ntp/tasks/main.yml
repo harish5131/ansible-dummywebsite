@@ -1,0 +1,25 @@
+# Configure ntp
+- name: Enable service ntp, and not touch the state
+  service:
+    name: ntpd
+    enabled: yes
+    masked: no
+- template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+- template:
+    src: ntpd.j2
+    dest: /etc/sysconfig/ntpd
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+- name: restart service ntp on centos, in all cases, also issue daemon-reload to pick up config changes
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: ntpd

@@ -1,0 +1,12 @@
+# Creates a user named johndoe
+- name: Create a user named johndoe with a 2048 bits SSH key
+  user:
+    name: johndoe
+    comment: John Doe
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+# Store the created pub key in our local ansible environment on ./roles/common/files/ssh_keys/johndow.pub
+- fetch:
+    src: ~johndoe/.ssh/id_rsa.pub
+    dest: /tmp/johndow.pub

@@ -1,0 +1,25 @@
+--- 
+- 
+  name: "Copying the myProgram"
+  template: 
+    backup: true
+    dest: /usr/local/bin/myProgram.sh
+    group: root
+    mode: 755
+    owner: root
+    src: myProgram.sh.js
+- 
+  name: "creating unit file"
+  template: 
+    backup: true
+    dest: /usr/lib/systemd/system/myProgram.service
+    group: root
+    mode: 644
+    owner: root
+    src: myProgram.service.js
+- 
+  name: "restart service myProgram on centos, in all cases, also issue daemon-reload to pick up config changes"
+  systemd: 
+    daemon_reload: true
+    name: myProgram.service
+    state: restarted

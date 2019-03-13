@@ -1,0 +1,31 @@
+---
+-
+  hosts: wordpress-stack
+  name: "Adding user jacob,Install Pakages, NTP,PHP"
+  remote_user: root
+  roles:
+    - user
+    - packages
+    - ntp
+    - shell
+    - common
+
+-
+  hosts: wordpress-server-db
+  name: "Install Pakages percona-mysql"
+  remote_user: root
+  roles:
+    - percona-mysql
+-
+  hosts: wordpress-server-web
+  name: "Install Nginx"
+  remote_user: root
+  roles:
+    - nginx
+-
+  hosts: wordpress-server-app
+  name: "Install Pakages wordpress"
+  remote_user: root
+  roles:
+    - php-fpm
+    - wordpress

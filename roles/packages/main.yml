@@ -1,0 +1,21 @@
+# Upgrades all the installed packages
+- name: Update all packages
+  yum:
+    name: '*'
+    state: latest
+# Install required packages
+- name: Install the following packages
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - screen
+    - vim
+    - htop
+    - git
+    - atop
+    - ntp
+    - unbound
+    - monit
+    - php-mysql
+    - php
