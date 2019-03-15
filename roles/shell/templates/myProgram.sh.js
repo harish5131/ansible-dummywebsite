@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(date) hello world" >/var/log/messages
+echo "$(date) hello world" >>/var/log/messages
